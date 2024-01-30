@@ -1,22 +1,32 @@
-  - name: HTML5 Validator
-  # You may pin to the exact commit or the version.
-  # uses: Cyb3r-Jak3/html5validator-action@41633d488eb36e18fd1a95ffc83daf1bf22a75bd
-  uses: Cyb3r-Jak3/html5validator-action@v7.2.0
-  with:
-    # Path of the files to test
-    root: # optional
-    # Path of config file
-    config: # optional
-    # Extra arguments to test with
-    extra: # optional
-    # Format for logging output. Valid values: gnu, xml, json, text
-    format: # optional
-    # Logging Level. Valid values: DEBUG, INFO, WARNING. Default: WARNING
-    log_level: # optional, default is WARNING
-    # Checks css as well
-    css: # optional
-    # Files or directories to ignore in checking
-    blacklist: # optional
-    # Skip checking that code has been checked out
-    skip_git_check: # optional
+name: frontend CI
+on: [pull_request]
+
+permissions: write-all
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      
+      - name: HTML5 Validator
+      # You may pin to the exact commit or the version.
+      # uses: Cyb3r-Jak3/html5validator-action@41633d488eb36e18fd1a95ffc83daf1bf22a75bd
+        uses: Cyb3r-Jak3/html5validator-action@v7.2.0
+        # with:
+        # # Path of the files to test
+        # root: # optional
+        # # Path of config file
+        # config: # optional
+        # # Extra arguments to test with
+        # extra: # optional
+        # # Format for logging output. Valid values: gnu, xml, json, text
+        # format: # optional
+        # # Logging Level. Valid values: DEBUG, INFO, WARNING. Default: WARNING
+        # log_level: # optional, default is WARNING
+        # # Checks css as well
+        # css: # optional
+        # # Files or directories to ignore in checking
+        # blacklist: # optional
+        # # Skip checking that code has been checked out
+        # skip_git_check: # optional
           
