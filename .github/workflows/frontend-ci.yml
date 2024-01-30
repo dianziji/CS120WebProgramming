@@ -7,23 +7,26 @@ jobs:
   ci:
     runs-on: ubuntu-latest
     steps:
-      - name: HTML5 Validator
-        uses: Cyb3r-Jak3/html5validator-action@v7.2.0
+      - uses: actions/checkout@v2 # Requried will all actions
+      - name: Checks HTML5
+        uses: Cyb3r-Jak3/html5validator-action@<latest version>
+        with:
+          root: <problemSet1-1>
 
-        # with:
-        # # Path of the files to test
-        # root: # optional
-        # # Path of config file
-        # config: # optional
-        # # Extra arguments to test with
-        # extra: # optional
-        # # Format for logging output. Valid values: gnu, xml, json, text
-        # format: # optional
-        # # Logging Level. Valid values: DEBUG, INFO, WARNING. Default: WARNING
-        # log_level: # optional, default is WARNING
-        # # Checks css as well
-        # css: # optional
-        # # Files or directories to ignore in checking
-        # blacklist: # optional
-        # # Skip checking that code has been checked out
-        # skip_git_check: # optional
+          # with:
+          # # Path of the files to test
+          # root: # optional
+          # # Path of config file
+          # config: # optional
+          # # Extra arguments to test with
+          # extra: # optional
+          # # Format for logging output. Valid values: gnu, xml, json, text
+          # format: # optional
+          # # Logging Level. Valid values: DEBUG, INFO, WARNING. Default: WARNING
+          # log_level: # optional, default is WARNING
+          # # Checks css as well
+          # css: # optional
+          # # Files or directories to ignore in checking
+          # blacklist: # optional
+          # # Skip checking that code has been checked out
+          # skip_git_check: # optional
