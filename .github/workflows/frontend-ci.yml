@@ -12,7 +12,7 @@ jobs:
         uses: Cyb3r-Jak3/html5validator-action@v7.2.0
 
         with:
-          src: ./problemSet1-1
+          root: problemSet1-1/
 
           # with:
           # # Path of the files to test
