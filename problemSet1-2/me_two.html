@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>about me</title>
+    <style>
+        @media(max-width:980px) {}
+
+        * {
+            font-family: sans-serif;
+        }
+
+        h1,
+        h2 {
+            color: blue;
+            margin-bottom: 30px;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid;
+            border-collapse: collapse;
+        }
+
+        th,
+        td :nth-child(even) {
+            background-color: bisque;
+        }
+
+        .centered-list {
+            border: 2px solid black;
+            width: fit-content;
+            text-align: left;
+            margin: auto;
+            padding: 10px;
+            list-style: inside;
+        }
+
+        .centered-list ul {
+            padding: 0px;
+        }
+
+        br {
+            clear: both;
+        }
+
+        .list_img {
+            height: 300px;
+        }
+
+
+        .favorite-food {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .food-background {
+            background-image: url('images/hotpot.JPG');
+            width: 300px;
+            height: 300px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            margin-right: 20px;
+        }
+
+        form {
+            align-content: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .icon_img_fixed {
+            position: fixed;
+            top: 100px;
+            right: 35px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Shuo Yang</h1>
+
+    <h2>Trip </h2>
+    <p>
+        Last summer, I had an unforgettable trip to Philadelphia, a city steeped in rich American history and vibrant
+        culture. Wandering through the cobblestone streets of Old City, I felt a deep connection to the past, especially
+        while visiting the iconic Liberty Bell and Independence Hall. The Philadelphia Museum of Art was another
+        highlight, not just for its vast collection of artworks but also for the famous 'Rocky' steps leading to its
+        entrance. Of course, no visit to Philly would be complete without indulging in a classic Philly cheesesteak,
+        which I savored at one of the local favorite spots. The blend of historical significance, diverse culinary
+        experiences, and the warm, welcoming nature of the city made my trip to Philadelphia truly memorable.
+    </p>
+
+    <h2>Favorite pet name</h2>
+    <div class="centered-list">
+        <ul>
+            <li>A cat named Mochi</li>
+            <li>A dog named Atlas</li>
+            <li>A squid named squidward</li>
+        </ul>
+    </div>
+
+    <h2>Favorite Restaurant</h2>
+    <a href="https://lecoucou.com/" target="_blank">le coucou</a>
+
+    <p>
+        My fondness for Le Coucou in New York stems from an unforgettable dining experience that combined exquisite
+        French cuisine with an elegant, inviting atmosphere, making it a memorable part of my culinary adventures. The
+        impeccable service and the beautifully crafted dishes, especially the Ris de veau à l'estragon - the veal
+        sweetbreads and the Canette a l'orange which is the roasted duckling for two, left a
+        lasting impression on me.
+    </p>
+
+
+    <h2>Favorite Food</h2>
+    <div class="favorite-food">
+
+        <div class="food-background"></div>
+
+        <div>
+            <p>
+                Gathering around a steaming hotpot, I relish the communal joy of cooking a variety of fresh ingredients
+                like meats and vegetables in the rich, flavorful broth. It's a delightfully interactive dining
+                experience where each person can create their unique, delicious combinations, enhancing both the meal
+                and the moment.
+            </p>
+        </div>
+    </div>
+    <br>
+
+    <h2>Favoriate Book</h2>
+
+    <table>
+
+        <tr>
+            <th>bookname</th>
+            <th>image</th>
+            <th>author</th>
+            <th>summary of book</th>
+        </tr>
+
+        <tr>
+            <td>"1984"</td>
+            <td> <img src="images/1984cover.png" alt="My favoriate book:1984" class="list_img"></td>
+            <td>George Orwell</td>
+            <td>A dystopian novel exploring the dangers of totalitarianism.</td>
+        </tr>
+
+
+    </table>
+    <br>
+
+
+    <form>
+        <div>
+            <label for="first_name">First name:</label>
+            <input type="text" name="first_name" id="first_name">
+        </div>
+        <br>
+        <div>
+            <label for="last_name">Last name:</label>
+            <input type="text" name="last_name" id="last_name">
+        </div>
+        <br>
+        <div>
+            <label for="city">City:</label>
+            <input type="text" name="city" id="city">
+        </div>
+        <br>
+        <div>
+            <label for="state">State:</label>
+            <select name="state" id="state">
+                <option value="null">-Select Your State-</option>
+                <option value="AL">Alabama</option>
+                <option value="AK">Alaska</option>
+                <option value="AZ">Arizona</option>
+                <option value="AR">Arkansas</option>
+                <option value="CA">California</option>
+                <option value="CO">Colorado</option>
+                <option value="CT">Connecticut</option>
+                <option value="DE">Delaware</option>
+                <option value="FL">Florida</option>
+                <option value="GA">Georgia</option>
+                <option value="HI">Hawaii</option>
+                <option value="ID">Idaho</option>
+                <option value="IL">Illinois</option>
+                <option value="IN">Indiana</option>
+                <option value="IA">Iowa</option>
+                <option value="KS">Kansas</option>
+                <option value="KY">Kentucky</option>
+                <option value="LA">Louisiana</option>
+                <option value="ME">Maine</option>
+                <option value="MD">Maryland</option>
+                <option value="MA">Massachusetts</option>
+                <option value="MI">Michigan</option>
+                <option value="MN">Minnesota</option>
+                <option value="MS">Mississippi</option>
+                <option value="MO">Missouri</option>
+                <option value="MT">Montana</option>
+                <option value="NE">Nebraska</option>
+                <option value="NV">Nevada</option>
+                <option value="NH">New Hampshire</option>
+                <option value="NJ">New Jersey</option>
+                <option value="NM">New Mexico</option>
+                <option value="NY">New York</option>
+                <option value="NC">North Carolina</option>
+                <option value="ND">North Dakota</option>
+                <option value="OH">Ohio</option>
+                <option value="OK">Oklahoma</option>
+                <option value="OR">Oregon</option>
+                <option value="PA">Pennsylvania</option>
+                <option value="RI">Rhode Island</option>
+                <option value="SC">South Carolina</option>
+                <option value="SD">South Dakota</option>
+                <option value="TN">Tennessee</option>
+                <option value="TX">Texas</option>
+                <option value="UT">Utah</option>
+                <option value="VT">Vermont</option>
+                <option value="VA">Virginia</option>
+                <option value="WA">Washington</option>
+                <option value="WV">West Virginia</option>
+                <option value="WI">Wisconsin</option>
+                <option value="WY">Wyoming</option>
+
+            </select>
+        </div>
+    </form>
+
+    <div>
+        <div class="icon_img_fixed">
+
+            <a href="http://facebook.com" target="_blank"><img src="images/facebook_icon.png" alt="facebook icon"></a>
+            <a href="http://twitter.com" target="_blank"><img src="images/icons8-twitterx-50.png"
+                    alt="twitter icon"></a>
+
+        </div>
+    </div>
+</body>
+
+</html>
