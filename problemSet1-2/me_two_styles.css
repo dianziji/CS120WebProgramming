@@ -1,0 +1,118 @@
+@media (max-width: 980px) {
+}
+
+body,
+html {
+  font-family: sans-serif;
+}
+
+h1,
+h2 {
+  color: rgb(39, 91, 146);
+  margin-bottom: 30px;
+}
+
+table,
+th,
+td {
+  border: 1px solid;
+  border-collapse: collapse;
+}
+
+td {
+  text-align: left;
+  padding: 5px;
+}
+
+table tr:nth-child(even) {
+  background-color: bisque;
+}
+
+table th {
+  background-color: rgb(121, 172, 152);
+}
+
+td img {
+  object-fit: fill;
+  width: 100%;
+  height: 300px;
+  display: flex;
+  padding: 0px !important;
+}
+
+.list_img {
+  height: 300px;
+  width: auto;
+  display: flex;
+  object-fit: fill;
+}
+
+.centered-list {
+  border: 2px solid black;
+  width: fit-content;
+  text-align: left;
+  margin: auto;
+  padding: 10px;
+  list-style: inside;
+}
+
+.centered-list ul {
+  padding: 0px;
+}
+
+br {
+  clear: both;
+}
+
+.favorite-food {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.food-background {
+  background-image: url("images/hotpot.JPG");
+  height: 300px;
+  width: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-right: 20px;
+}
+
+.form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px;
+}
+
+.form-row {
+  display: flex;
+  margin-bottom: 15px;
+  align-items: center;
+}
+
+.form-row label {
+  width: 30%;
+  margin-right: 10px;
+  text-align: left;
+}
+
+.form-row input,
+.form-row select {
+  position: relative;
+  width: 100%;
+}
+
+.form-row input[type="submit"]:hover {
+  color: wheat;
+  background-color: cadetblue;
+  border-radius: 10px;
+}
+
+.icon_img_fixed {
+  position: fixed;
+  top: 100px;
+  right: 35px;
+}
