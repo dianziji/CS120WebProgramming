@@ -1,0 +1,67 @@
+body,
+html {
+  font-family: Arial;
+}
+h1,
+h2 {
+  font-size: 30px;
+  font-weight: normal;
+  color: white;
+  margin-bottom: 15px;
+}
+
+h3 {
+  font-size: 15px;
+  font-weight: normal;
+  color: white;
+}
+
+#top_welcome {
+  background-image: url("images/bandBackground.jpg");
+
+  height: 1080px;
+  width: auto;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  text-align: center;
+  padding-top: 400px;
+  box-sizing: border-box;
+}
+
+#top_welcome a {
+  text-decoration: none;
+  color: white;
+  padding: 10px;
+}
+
+.left_header {
+  display: inline-block;
+  position: fixed;
+  top: 50px;
+  left: 50px;
+  font-size: 15px;
+}
+.left_header a {
+  text-decoration: none;
+  color: white;
+  padding: 10px;
+}
+
+.left_header a:hover {
+  text-decoration-line: underline;
+  color: whitesmoke;
+}
+
+.right_header {
+  display: inline-block;
+  position: fixed;
+  top: 50px;
+  right: 50px;
+}
+
+.right_header img {
+  height: 20px;
+  width: auto;
+  padding-left: 10px;
+}
