@@ -25,15 +25,9 @@ h3 {
   background-repeat: no-repeat;
   background-position: 0 100%;
   text-align: center;
-  padding-top: 400px;
+  padding-top: 320px;
   box-sizing: border-box;
   margin-bottom: 0;
-}
-
-#top_welcome a {
-  text-decoration: none;
-  color: white;
-  padding: 10px;
 }
 
 #top_welcome p {
