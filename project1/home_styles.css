@@ -1,6 +1,7 @@
 body,
 html {
   font-family: Arial;
+  background-color: white;
 }
 h1,
 h2 {
@@ -36,15 +37,19 @@ h3 {
 }
 
 .left_header {
-  display: inline-block;
+  display: flex;
   position: fixed;
+  color: white;
   top: 50px;
   left: 50px;
   font-size: 15px;
+  mix-blend-mode: difference;
+  z-index: 100;
+  width: 100%;
 }
 .left_header a {
   text-decoration: none;
-  color: white;
+  color: rgb(231, 72, 72);
   padding: 10px;
 }
 
@@ -54,10 +59,12 @@ h3 {
 }
 
 .right_header {
-  display: inline-block;
+  display: flex;
   position: fixed;
   top: 50px;
   right: 50px;
+  mix-blend-mode: difference;
+  z-index: 100;
 }
 
 .right_header img {
@@ -85,11 +92,10 @@ h3 {
   padding-top: 103px;
   display: flex 50%;
   height: 400px;
-  width: 800px;
+  width: auto;
   object-fit: cover;
   object-position: 50% 100%;
-
-  z-index: 999;
+  z-index: 50;
 }
 
 #contant_album p {
