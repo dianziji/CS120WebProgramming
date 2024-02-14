@@ -1,0 +1,171 @@
+body,
+html {
+  font-family: Arial;
+}
+h1,
+h2 {
+  font-size: 30px;
+  font-weight: normal;
+  color: white;
+  margin-bottom: 15px;
+}
+
+h3 {
+  font-size: 15px;
+  font-weight: normal;
+  color: white;
+}
+
+#top_welcome {
+  background-image: url("images/bandBackground_resize.jpg");
+
+  height: 950px;
+  width: auto;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  text-align: center;
+  padding-top: 400px;
+  box-sizing: border-box;
+  margin-bottom: 0;
+}
+
+#top_welcome a {
+  text-decoration: none;
+  color: white;
+  padding: 10px;
+}
+
+#top_welcome p {
+  color: white;
+  margin: 0 auto;
+}
+
+.left_header {
+  display: inline-block;
+  position: fixed;
+  top: 50px;
+  left: 50px;
+  font-size: 15px;
+}
+.left_header a {
+  text-decoration: none;
+  color: white;
+  padding: 10px;
+}
+
+.left_header a:hover {
+  text-decoration-line: underline;
+  color: whitesmoke;
+}
+
+.right_header {
+  display: inline-block;
+  position: fixed;
+  top: 50px;
+  right: 50px;
+}
+
+.right_header img {
+  height: 20px;
+  width: auto;
+  padding-left: 10px;
+}
+
+#contant_album {
+  background-image: url("images/bandBackground_resize.jpg");
+
+  height: 500px;
+  width: auto;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 100 100%;
+  margin-top: 0;
+  text-align: center;
+  padding-top: 250px;
+  box-sizing: border-box;
+}
+
+#contant_album img {
+  position: relative;
+  padding-top: 103px;
+  display: flex 50%;
+  height: 400px;
+  width: 800px;
+  object-fit: cover;
+  object-position: 50% 100%;
+
+  z-index: 999;
+}
+
+#contant_album p {
+  position: relative;
+  display: flex 50%;
+  text-align: center;
+  color: white;
+  padding-bottom: 20px;
+}
+
+#contant_album a {
+  text-decoration: none;
+  color: white;
+  border: 1px solid white;
+  padding: 5px;
+}
+
+.contant_center {
+  position: relative;
+  display: flex 50%;
+
+  text-align: center;
+  color: white;
+}
+
+.contant_center p {
+  position: relative;
+  display: flex 50%;
+  border: 300px;
+  text-align: center;
+  color: black;
+  padding: 0 20%;
+}
+
+#bottom_subscription {
+  background-image: url("images/bandBackground_resize.jpg");
+
+  height: 1080px;
+  width: auto;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  text-align: center;
+  padding-top: 400px;
+  box-sizing: border-box;
+  margin-top: 550px;
+}
+
+.bottom_center {
+  position: relative;
+  display: flex 50%;
+
+  text-align: center;
+  color: white;
+}
+
+.bottom_center p {
+  position: relative;
+  display: flex 50%;
+  border: 300px;
+  text-align: center;
+  color: white;
+  padding: 0 20%;
+}
+
+.bottom_center input[type="submit"] {
+  color: white;
+
+  border: 1px solid white;
+  background-color: transparent;
+  box-shadow: none;
+  padding: 30;
+}
