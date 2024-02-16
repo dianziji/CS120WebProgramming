@@ -40,16 +40,16 @@ h3 {
   display: flex;
   position: fixed;
   color: white;
-  top: 50px;
+  top: 40px;
   left: 50px;
   font-size: 15px;
-  mix-blend-mode: difference;
+  width: auto;
   z-index: 100;
-  width: 100%;
+
 }
 .left_header a {
   text-decoration: none;
-  color: rgb(231, 72, 72);
+  color: white;
   padding: 10px;
 }
 
@@ -63,7 +63,7 @@ h3 {
   position: fixed;
   top: 50px;
   right: 50px;
-  mix-blend-mode: difference;
+
   z-index: 100;
 }
 
