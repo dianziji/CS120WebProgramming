@@ -45,7 +45,6 @@ h3 {
   font-size: 15px;
   width: auto;
   z-index: 100;
-
 }
 .left_header a {
   text-decoration: none;
@@ -168,4 +167,21 @@ h3 {
   background-color: transparent;
   box-shadow: none;
   padding: 30;
+}
+
+footer {
+  background-color: rgb(141, 141, 141);
+  margin-top: 0px;
+  padding: 10px 15px;
+  color: white;
+}
+
+footer a {
+  text-decoration: none;
+  color: white;
+}
+
+footer a:hover {
+  text-decoration-line: underline;
+  color: white;
 }
