@@ -32,10 +32,10 @@
     #background {
         background-image: url("images/bandBackground_resize.jpg");
         height: 950px;
-        width: 100%;
+        width: auto;
         background-size: cover;
         background-repeat: no-repeat;
-        background-position: 0 100%;
+        background-position: center;
         text-align: center;
         padding-top: 150px;
         box-sizing: border-box;
@@ -155,6 +155,37 @@
         text-decoration-line: underline;
         color: white;
     }
+
+
+    
+    @media (max-width: 800px) {
+        #top_welcome {
+            background-position: center;
+        }
+
+        .header {
+            display: flex;
+            text-align: center;
+            justify-content: center;
+        }
+
+        .left_header {
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.4);
+            left: 0;
+            right: 0;
+            top: 0;
+            padding-top: 10px;
+            width: auto;
+            position: fixed;
+        }
+
+        .right_header {
+            justify-content: center;
+            top: 0;
+            right: auto;
+            position: relative;
+        }}
 </style>
 
 
