@@ -20,11 +20,11 @@ h3 {
 #top_welcome {
   background-image: url("images/bandBackground_resize.jpg");
 
-  height: 950px;
+  min-height: 950px;
   width: auto;
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: 0 100%;
+  background-position: center;
   text-align: center;
   padding-top: 320px;
   box-sizing: border-box;
@@ -79,7 +79,7 @@ h3 {
   width: auto;
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: 100 100%;
+  background-position: 100 auto;
   margin-top: 0;
   text-align: center;
   padding-top: 250px;
@@ -136,7 +136,7 @@ h3 {
   width: auto;
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: 0 100%;
+  background-position: center;
   text-align: center;
   padding-top: 400px;
   box-sizing: border-box;
@@ -184,4 +184,61 @@ footer a {
 footer a:hover {
   text-decoration-line: underline;
   color: white;
+}
+
+/* mobile media queries*/
+
+@media (max-width: 800px) {
+  #top_welcome {
+    background-position: center;
+  }
+
+  .header {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .left_header {
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.4);
+    left: 0;
+    right: 0;
+    top: 0;
+    padding-top: 10px;
+    width: auto;
+    position: fixed;
+  }
+  .right_header {
+    justify-content: center;
+
+    right: auto;
+
+    position: relative;
+  }
+  #contant_album {
+    padding-top: 150px;
+  }
+  #contant_album img{
+    height: 250px;
+    padding-top: 253px;
+    padding-bottom: 20px;
+  }
+
+
+  #bottom_subscription {
+    background-image: url("images/bandBackground_resize.jpg");
+  
+    height: 600px;
+    width: auto;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    text-align: center;
+    padding-top: 160px;
+    box-sizing: border-box;
+    margin-top: 550px;
+  }
+
+
 }

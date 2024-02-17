@@ -32,11 +32,11 @@
 
     #background {
         background-image: url("images/bandBackground_resize.jpg");
-        height: 950px;
+        min-height: 950px;
         width: auto;
         background-size: cover;
         background-repeat: no-repeat;
-        background-position: 0 100%;
+        background-position: center;
         text-align: center;
         padding-top: 100px;
         box-sizing: border-box;
@@ -160,6 +160,69 @@
         text-decoration-line: underline;
         color: white;
     }
+
+    @media (max-width: 800px) {
+        #top_welcome {
+          background-position: center;
+        }
+      
+        .header {
+          display: flex;
+          text-align: center;
+          justify-content: center;
+        }
+      
+        .left_header {
+          justify-content: center;
+          background-color: rgba(255, 255, 255, 0.4);
+          left: 0;
+          right: 0;
+          top: 0;
+          padding-top: 10px;
+          width: auto;
+          position: fixed;
+        }
+        .right_header {
+          justify-content: center;
+          top: 0;
+          right: auto;
+      
+          position: relative;
+        }
+
+        .table-head {
+            font-size: 16px; 
+            text-align-last: center; 
+
+        }
+    
+        .table-content {
+            font-size: 10px; 
+        }
+    
+        table {
+            
+            max-width: 100%; 
+            padding: 10px 20px; 
+        }
+    
+        td {
+            padding: 10px 5px; 
+            text-align: center; 
+        }
+        input[type="submit"] {
+            color: white;
+            border: 1px solid white;
+            background-color: transparent;
+            text-align: center;
+            position: relative;
+            width: auto;
+            font-size: 10px;
+            padding: 5px 5px;
+        }
+    }
+
+
 </style>
 
 
