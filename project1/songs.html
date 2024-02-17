@@ -1,12 +1,314 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Songs</title>
 </head>
+
+<style>
+    body,
+    html {
+        font-family: Arial;
+        background-color: white;
+        text-align: center;
+
+    }
+
+    h1,
+    h2 {
+        font-size: 30px;
+        font-weight: normal;
+        color: white;
+        margin-bottom: 15px;
+
+
+    }
+
+    h3 {
+        font-size: 20px;
+        font-weight: bold;
+        color: white;
+    }
+
+    #background {
+        background-image: url("images/bandBackground_resize.jpg");
+        min-height: 920px;
+        width: auto;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: 0 100%;
+        text-align: center;
+        padding-top: 100px;
+        box-sizing: border-box;
+        margin-bottom: 0;
+        margin-top: 0;
+    }
+
+    .left_header {
+        display: flex;
+        position: fixed;
+        color: white;
+        top: 40px;
+        left: 50px;
+        font-size: 15px;
+        width: auto;
+        z-index: 100;
+
+    }
+
+    .left_header a {
+        text-decoration: none;
+        color: white;
+        padding: 10px;
+    }
+
+    .left_header a:hover {
+        text-decoration-line: underline;
+
+        color: whitesmoke;
+    }
+
+    .right_header {
+        display: flex;
+        position: fixed;
+        top: 50px;
+        right: 50px;
+
+        z-index: 100;
+    }
+
+    .right_header img {
+        height: 20px;
+        width: auto;
+        padding-left: 10px;
+    }
+
+
+    input[type="submit"] {
+        color: white;
+        border: 1px solid white;
+        background-color: transparent;
+        text-align: center;
+        position: relative;
+        width: auto;
+        padding: 5px 20px;
+    }
+
+    input[type="submit"]:hover {
+        background-color: rgba(255, 255, 255, 0.4);
+        border: 1px solid white;
+        position: relative;
+    }
+
+    p {
+        color: white;
+        width: auto;
+        display: 50% flex;
+
+    }
+
+
+    .container-parent {
+        background-color: rgba(70, 81, 85, 0.3);
+
+        background-position: center;
+
+        display: flex;
+
+        justify-content: center;
+
+        align-items: center;
+
+        padding-bottom: 20px;
+
+        align-content: center;
+        position: relative;
+    }
+
+    .container {
+        display: flex;
+
+        flex-flow: row wrap;
+        flex-grow: 1;
+        max-width: 300px;
+        padding-bottom: 20px;
+
+        justify-content: space-around;
+        align-content: space-between;
+        height: 150px;
+
+
+    }
+
+    .container-img {
+
+
+
+        align-items: center;
+        box-sizing: border-box;
+
+        padding-bottom: 20px;
+
+        height: 50px;
+
+        max-width: 300px;
+
+    }
+
+    ul,
+    ol {
+        flex-direction: row;
+        text-align: center;
+        color: white;
+        font-size: 12px;
+        padding-left: 0px;
+        padding-bottom: 5px;
+    }
+
+    footer {
+        background-color: rgb(141, 141, 141);
+        margin-top: 0px;
+        padding: 10px 15px;
+        color: white;
+        text-align: left;
+    }
+
+    footer a {
+        text-decoration: none;
+        color: white;
+    }
+
+    footer a:hover {
+        text-decoration-line: underline;
+        color: white;
+    }
+</style>
+
+
 <body>
-    <h1>Songs Page</h1>
-    need a list 
+
+
+
+
+
+
+    <div id="background">
+
+        <header>
+            <div class="left_header">
+                <a href="home.html">HOME</a>
+                <a href="tour.html">TOUR</a>
+
+                <a href="songs.html">SONGS</a>
+
+                <a href="contact.html">CONTACT</a>
+            </div>
+            <div class="right_header">
+                <a href="http://facebook.com" target="_blank"><img src="images/facebookIcon.png"
+                        alt="facebook icon"></a>
+                <a href="http://twitter.com" target="_blank"><img src="images/twitterIcon.png" alt="twitter icon"></a>
+                <a href="http://instagram.com" target="_blank"><img src="images/insIcon.png" alt="Instagram icon"></a>
+                <a href="http://youtube.com" target="_blank"><img src="images/YouTubeIcon.png" alt="YouTube icon"></a>
+            </div>
+        </header>
+
+
+        <!-- <h2>New Album</h2>
+        <div class="container-img">
+
+            <img src="images/vinylPic_resize.jpg" alt="a vinyl pic">
+            <img src="images/vinylPic_resize.jpg" alt="a vinyl pic">
+            <img src="images/vinylPic_resize.jpg" alt="a vinyl pic">
+
+        </div> -->
+
+
+
+
+
+        <h2>Popular Songs</h2>
+
+        <div class="container-parent">
+            <div class="container">
+                <ul>
+                    <h3>Classic Rock</h3>
+                    <ol>"Sweet Child o' Mine" by Guns N' Roses</ol>
+                    <ol>"Don't Stop Believin'" by Journey</ol>
+                    <ol>"Bohemian Rhapsody" by Queen</ol>
+                    <ol>"Livin' on a Prayer" by Bon Jovi</ol>
+                    <ol>"Go Your Own Way" by Fleetwood Mac</ol>
+
+                </ul>
+            </div>
+
+            <div class="container">
+                <ul>
+                    <h3>Pop</h3>
+                    <ol>"Shape of You" by Ed Sheerani</ol>
+                    <ol> "Levitating" by Dua Lipa</ol>
+                    <ol> "Can't Stop the Feeling!" by Justin Timberlake</ol>
+                    <ol> "Rolling in the Deep" by Adele</ol>
+                    <ol> "Uptown Funk" by Mark Ronson ft. Bruno Mars</ol>
+                </ul>
+            </div>
+            <div class="container">
+                <ul>
+                    <h3>Indie/Alternative</h3>
+                    <ol>"Dog Days Are Over" by Florence + The Machine</ol>
+                    <ol> "Ho Hey" by The Lumineers</ol>
+                    <ol> "Take Me Out" by Franz Ferdinand</ol>
+                    <ol> "Somebody That I Used to Know" by Gotye ft. Kimbra</ol>
+                    <ol> "Electric Feel" by MGMT</ol>
+                </ul>
+            </div>
+        </div>
+
+
+
+        <div class="container-parent">
+            <div class="container">
+                <ul>
+                    <h3>Indie/Alternative</h3>
+                    <ol>"Dog Days Are Over" by Florence + The Machine</ol>
+                    <ol> "Ho Hey" by The Lumineers</ol>
+                    <ol> "Take Me Out" by Franz Ferdinand</ol>
+                    <ol> "Somebody That I Used to Know" by Gotye ft. Kimbra</ol>
+                    <ol> "Electric Feel" by MGMT</ol>
+                </ul>
+            </div>
+
+
+            <div class="container">
+                <ul>
+                    <h3>Pop Punk</h3>
+                    <ol> "All The Small Things" by Blink-182</ol>
+                    <ol> "Sugar, We're Goin Down" by Fall Out Boy</ol>
+                    <ol> "Basket Case" by Green Day</ol>
+                    <ol> "Misery Business" by Paramore</ol>
+                    <ol> "The Anthem" by Good Charlotte</ol>
+                </ul>
+            </div>
+            <div class="container">
+                <ul>
+                    <h3>Dance/Electronic</h3>
+                    <ol>"Get Lucky" by Daft Punk ft. Pharrell Williams</ol>
+                    <ol>"Don't You Worry Child" by Swedish House Mafia</ol>
+                    <ol>"Wake Me Up" by Avicii</ol>
+                    <ol>"Titanium" by David Guetta ft. Sia</ol>
+                    <ol>"Closer" by The Chainsmokers ft. Halsey</ol>
+                </ul>
+            </div>
+
+
+
+        </div>
+    </div>
+    <footer>
+        <a href="contact.html">Contact Us</a>
+        <p>Copyright © Brooklyn Beat Brigade</p>
+    </footer>
 </body>
+
 </html>
