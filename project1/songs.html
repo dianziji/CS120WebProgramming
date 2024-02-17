@@ -142,7 +142,7 @@
         margin-top: 0px;
         padding: 10px 15px;
         color: white;
-        text-align: left;
+        text-align: center;
     }
 
     footer a {
@@ -154,12 +154,38 @@
         text-decoration-line: underline;
         color: white;
     }
-
+    footer .right_header {
+        justify-content: center;
+        top: 0;
+        right: auto;
+      
+        position: relative;
+      
+      }
+      
+      footer .right_header img {
+        max-height: 20px;
+        position: relative;
+        padding-right: 5px;
+        padding-left: 5px;
+      
+      }
 
     @media (max-width: 800px) {
         #top_welcome {
             background-position: center;
         }
+
+        #background {
+            padding-top: 20px;
+        }
+
+        h1,
+        h2 {
+            padding: 50px;
+            font-size: x-large;
+        }
+
 
         .header {
             display: flex;
@@ -182,7 +208,7 @@
             justify-content: center;
             top: 0;
             right: auto;
-
+            visibility: hidden;
             position: relative;
         }
 
@@ -190,7 +216,7 @@
             flex-direction: column;
             padding: 10px 10px;
 
-            width: 400px;
+            max-width: 300px;
             margin: 0 auto;
 
         }
@@ -206,6 +232,17 @@
         ol {
             flex-direction: column;
         }
+
+    }
+
+    footer .right_header {
+        visibility: visible;
+    }
+    footer .right_header img {
+        max-height: 20px;
+        position: relative;
+        padding-right: 5px;
+        padding-left: 5px;
 
     }
 </style>
@@ -330,7 +367,15 @@
         </div>
     </div>
     <footer>
-        <a href="contact.html">Contact Us</a>
+        <div><a href="contact.html">Contact Us</a></div>
+
+        <br>
+        <div class="right_header">
+            <a href="http://facebook.com" target="_blank"><img src="images/facebookIcon.png" alt="facebook icon"></a>
+            <a href="http://twitter.com" target="_blank"><img src="images/twitterIcon.png" alt="twitter icon"></a>
+            <a href="http://instagram.com" target="_blank"><img src="images/insIcon.png" alt="Instagram icon"></a>
+            <a href="http://youtube.com" target="_blank"><img src="images/YouTubeIcon.png" alt="YouTube icon"></a>
+        </div>
         <p>Copyright © Brooklyn Beat Brigade</p>
     </footer>
 </body>

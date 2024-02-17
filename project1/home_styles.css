@@ -62,7 +62,6 @@ h3 {
   position: fixed;
   top: 50px;
   right: 50px;
-
   z-index: 100;
 }
 
@@ -174,6 +173,7 @@ footer {
   margin-top: 0px;
   padding: 10px 15px;
   color: white;
+  text-align: center;
 }
 
 footer a {
@@ -186,11 +186,32 @@ footer a:hover {
   color: white;
 }
 
+footer .right_header {
+  justify-content: center;
+  top: 0;
+  right: auto;
+
+  position: relative;
+
+}
+
+footer .right_header img {
+  max-height: 20px;
+  position: relative;
+  padding-right: 5px;
+  padding-left: 5px;
+
+}
 /* mobile media queries*/
 
 @media (max-width: 800px) {
   #top_welcome {
     background-position: center;
+  }
+
+  h1,
+  h2 {
+    font-size: x-large;
   }
 
   .header {
@@ -211,24 +232,34 @@ footer a:hover {
   }
   .right_header {
     justify-content: center;
-
-    right: auto;
-
+    top: 0;
+    right: 0;
+    left: 0;
+    padding-top: 20px;
     position: relative;
   }
+  .right_header img{
+    padding-right: 5px;
+    padding-left: 5px;            
+    
+}
   #contant_album {
     padding-top: 150px;
   }
-  #contant_album img{
+  #contant_album p{
+    width: auto;
+    text-align: center;
+  }
+
+  #contant_album img {
     height: 250px;
     padding-top: 253px;
     padding-bottom: 20px;
   }
 
-
   #bottom_subscription {
     background-image: url("images/bandBackground_resize.jpg");
-  
+
     height: 600px;
     width: auto;
     background-size: cover;
@@ -237,8 +268,19 @@ footer a:hover {
     text-align: center;
     padding-top: 160px;
     box-sizing: border-box;
-    margin-top: 550px;
+    margin-top: 600px;
   }
 
+  footer .right_header {
+    visibility: visible;
 
+}
+
+  footer .right_header img {
+    max-height: 20px;
+    position: relative;
+    padding-right: 5px;
+    padding-left: 5px;
+
+}
 }
