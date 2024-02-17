@@ -192,7 +192,6 @@ footer .right_header {
   right: auto;
 
   position: relative;
-
 }
 
 footer .right_header img {
@@ -200,7 +199,6 @@ footer .right_header img {
   position: relative;
   padding-right: 14px;
   padding-left: 14px;
-
 }
 /* mobile media queries*/
 
@@ -238,15 +236,14 @@ footer .right_header img {
     padding-top: 20px;
     position: relative;
   }
-  .right_header img{
+  .right_header img {
     padding-right: 5px;
-    padding-left: 5px;            
-    
-}
+    padding-left: 5px;
+  }
   #contant_album {
     padding-top: 150px;
   }
-  #contant_album p{
+  #contant_album p {
     width: auto;
     text-align: center;
   }
@@ -273,14 +270,12 @@ footer .right_header img {
 
   footer .right_header {
     visibility: visible;
-
-}
+  }
 
   footer .right_header img {
     max-height: 20px;
     position: relative;
-    padding-right: 5px;
-    padding-left: 5px;
-
-}
+    padding-right: 14px;
+    padding-left: 14px;
+  }
 }
