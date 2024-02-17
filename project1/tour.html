@@ -149,6 +149,9 @@
         margin-top: 0px;
         padding: 10px 15px;
         color: white;
+        text-align: center;
+
+
     }
 
     footer a {
@@ -161,55 +164,87 @@
         color: white;
     }
 
+
+    footer .right_header {
+        justify-content: center;
+        top: 0;
+        right: auto;
+      
+        position: relative;
+      
+      }
+      
+      footer .right_header img {
+        max-height: 20px;
+        position: relative;
+        padding-right: 5px;
+        padding-left: 5px;
+      
+      }
+
     @media (max-width: 800px) {
         #top_welcome {
-          background-position: center;
+            background-position: center;
+
         }
-      
+
+        #background {
+            padding-top: 20px;
+        }
+
+        h1,h2 {
+            padding: 50px;
+            font-size: x-large;
+        }
+
         .header {
-          display: flex;
-          text-align: center;
-          justify-content: center;
+            display: flex;
+            text-align: center;
+            justify-content: center;
         }
-      
+
         .left_header {
-          justify-content: center;
-          background-color: rgba(255, 255, 255, 0.4);
-          left: 0;
-          right: 0;
-          top: 0;
-          padding-top: 10px;
-          width: auto;
-          position: fixed;
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.4);
+            left: 0;
+            right: 0;
+            top: 0;
+            padding-top: 10px;
+            width: auto;
+            position: fixed;
         }
+
         .right_header {
-          justify-content: center;
-          top: 0;
-          right: auto;
-      
-          position: relative;
+            justify-content: center;
+            top: 0;
+            right: auto;
+            visibility: hidden;
+            position: relative;
         }
 
         .table-head {
-            font-size: 16px; 
-            text-align-last: center; 
+            font-size: 16px;
+            text-align-last: center;
 
         }
-    
+
         .table-content {
-            font-size: 10px; 
+            font-size: 10px;
         }
-    
+
         table {
-            
-            max-width: 100%; 
-            padding: 10px 20px; 
+
+            max-width: 100%;
+            padding: 10px 20px;
+
         }
-    
+
         td {
-            padding: 10px 5px; 
-            text-align: center; 
+            padding: 10px 5px;
+            text-align: center;
+
         }
+
         input[type="submit"] {
             color: white;
             border: 1px solid white;
@@ -220,9 +255,19 @@
             font-size: 10px;
             padding: 5px 5px;
         }
+
+        footer .right_header {
+            visibility: visible;
+
+        }
+        footer .right_header img {
+            max-height: 20px;
+            position: relative;
+            padding-right: 5px;
+            padding-left: 5px;
+
+        }
     }
-
-
 </style>
 
 
@@ -378,7 +423,15 @@
 
     </div>
     <footer>
-        <a href="contact.html">Contact Us</a>
+        <div><a href="contact.html">Contact Us</a></div>
+
+        <br>
+        <div class="right_header">
+            <a href="http://facebook.com" target="_blank"><img src="images/facebookIcon.png" alt="facebook icon"></a>
+            <a href="http://twitter.com" target="_blank"><img src="images/twitterIcon.png" alt="twitter icon"></a>
+            <a href="http://instagram.com" target="_blank"><img src="images/insIcon.png" alt="Instagram icon"></a>
+            <a href="http://youtube.com" target="_blank"><img src="images/YouTubeIcon.png" alt="YouTube icon"></a>
+        </div>
         <p>Copyright © Brooklyn Beat Brigade</p>
     </footer>
 </body>
