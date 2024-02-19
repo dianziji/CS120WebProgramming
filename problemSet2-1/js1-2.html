@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>js1-2</title>
 </head>
+
 <body>
-    
+    <script>
+        var f_to_c = prompt("Enter a temperature in Fahrenheit: ");
+        alert("The temperature in Celsius is " + ((parseInt(f_to_c) - 32) * 5 / 9).toFixed(2));
+
+        var c_to_f = prompt("Enter a temperature in Celsius: ");
+        alert("The temperature in Celsius is " + ((parseInt(c_to_f) * 9 / 5) + 32).toFixed(2));
+    </script>
 </body>
+
 </html>
