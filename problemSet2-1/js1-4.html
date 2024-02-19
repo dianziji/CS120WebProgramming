@@ -1,11 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>js1-4</title>
 </head>
+
 <body>
-    
+    <script>
+        var start = prompt("Please enter the start of the range: ");
+        var end = prompt("Please enter the end of the range: ");
+        var result = parseInt(0);
+
+        for (i = start; i <= end; i++) {
+            if (i % 2 != 0) {
+                document.write(i + "\n");
+
+                result += parseInt(i);
+            }
+        }
+
+        document.write("result: ");
+        document.write(result);
+
+    </script>
+
 </body>
+
 </html>
