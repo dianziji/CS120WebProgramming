@@ -9,15 +9,18 @@
 
 <body>
     <script>
-        var start = prompt("Please enter the start of the range: ");
-        var end = prompt("Please enter the end of the range: ");
-        var result = parseInt(0);
+        var start = parseInt(prompt("Please enter the start of the range: "));
+        var end = parseInt(prompt("Please enter the end of the range: "));
+        var result = 0;
 
-        for (i = start; i <= end; i++) {
+
+
+
+        for (var i = start; i <= end; i++) {
             if (i % 2 != 0) {
                 document.write(i + "\n");
 
-                result += parseInt(i);
+                result += i;
             }
         }
 
