@@ -10,9 +10,37 @@
 
 <body>
 
+    <script>
+
+        function count(array, value) {
+            var count = 0;
+            for (i = 0; i < array.length; i++) {
+                if (array[i] < value) {
+                    count++;
+                }
+
+            }
+            return count;
+        }
+
+        function resultDisply() {
+
+            const array = [3, 55, 30, 28, 9, 12];
+            var value = 10;
+
+            var result = count(array, value);
+
+            document.write(result);
 
 
-    
+        }
+
+        resultDisply();
+
+
+    </script>
+
+
 </body>
 
 </html>
