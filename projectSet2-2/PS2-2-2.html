@@ -8,7 +8,23 @@
 <body>
     <script>
 
-        
+    //setup name list
+    let name_list = "Pat, Chris, Marlon, Ferncroft, Assunta";
+
+    //get name array
+    const name_array = name_list.split(", ");
+    
+    //create list
+    let list = "<ol>";
+    name_array.forEach(content);
+    list +="</ol>";
+
+    //helper function
+    function content(value){
+        list += "<li>" + value + "</li>";
+    }
+
+    document.write(list);
     </script>
 </body>
 
