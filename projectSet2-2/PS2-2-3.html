@@ -1,45 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PS2-2-3</title>
 </head>
+
 <body>
     <script>
-        /*
 
-
-        Create a form with an input box to get a user's name
-        Add 3 buttons to the form - the buttons should be labeled:  "Hello", "Good Bye", and "Greetings" respectively
-        Do not include a submit button with the form
-        Create a function called "speak" that has a parameter called "prefix"
-        speak(prefix)
-        speak() should pop up an alert that displays the prefix followed by the name in the input box
-        for example, if the user enters "Bill" in the input box, speak("Hello") should pop up:  "Hello Bill"
-        Assign an event handler to each button using the speak function.  Do this within the HTML code for the button
-        */
-        
-
-
+        function speak(prefix) {
+            var input_name = document.getElementById("name").value;
+            alert(prefix + " " + input_name + "!");
+        }
 
     </script>
 
-<form action="">
+    <form>
 
-    <label for="name">username</label>
-    <input type="text" id="name" name = "username"> <br><br>
-    <!-- <label for="hello">Hello</label> -->
-    <input type="button" value="Hello"> 
-    <!-- <label for="goodbye">Good Bye</label> -->
-    <input type="button" value="Good bye"> 
-    <!-- <label for="greetings">Greetings</label> -->
-    <input type="button" onclick="speak" value="Greetings">
-    
-    <button onclick="speak(hello)">Hello</button>
-    <br>
+        <label for="name">username</label>
+        <input type="text" id="name" name="username"> <br><br>
 
-</form>
+        <button type="button" onclick="speak('hello')">Hello</button>
+        <button type="button" onclick="speak('Goodbye')">Goodbye</button>
+        <button type="button" onclick="speak('Greetings')">Greetings</button>
+        <br>
+
+    </form>
 
 
 
