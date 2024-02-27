@@ -60,11 +60,9 @@
 
         const selectList = document.getElementById("statesList");
         let optionsHTML = '';
-        states.forEach((state, index) => {
-
-
-            optionsHTML += `<option value="${state}">${state}</option>`;
-        });
+        for (let i = 0; i < states.length; i++) {
+            optionsHTML += '<option value="' + states[i] + '">' + states[i] + '</option>';
+        }
         selectList.innerHTML = optionsHTML;
         selectList.selectedIndex = 0;
 
@@ -74,7 +72,7 @@
 
             const statesDisplay = document.getElementById("selectedStatesList");
 
-            statesDisplay.innerHTML += `<li>${selectedState.text}</li>`;
+            statesDisplay.innerHTML += '<li>' + selectedState.text + '</li>';
 
             selectList.removeChild(selectedState);
         }
@@ -86,9 +84,9 @@
             // Restore the select list
             selectList.innerHTML = '';
 
-            states.forEach((state) => {
-                selectList.innerHTML += `<option value="${state}">${state}</option>`;
-            });
+            for (let i = 0; i < states.length; i++) {
+                selectList.innerHTML += '<option value="' + states[i] + '">' + states[i] + '</option>';
+            }
         }
 
         //listener
