@@ -1,15 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PS2-2-4</title>
 </head>
+
 <body>
     <script>
 
-        
+
+
+        window.onload = function () {
+
+            //get buttons
+            var b1 = document.getElementById("b1");
+            var b2 = document.getElementById("b2");
+            var b3 = document.getElementById("b3");
+
+            //assign function
+            b1.onclick = speak;
+            b2.onclick = speak;
+            b3.onclick = speak;
+
+
+        }
+
+        function speak() {
+            var prefix = this.innerText;
+            var input_name = document.getElementById("name").value;
+            alert(prefix + " " + input_name + "!");
+        }
+
     </script>
+
+    <form>
+
+        <label for="name">username</label>
+        <input type="text" id="name" name="username"> <br><br>
+
+        <button type="button" id="b1">Hello</button>
+        <button type="button" id="b2">Goodbye</button>
+        <button type="button" id="b3">Greetings</button>
+        <br>
+
 </body>
 
 <br>
@@ -17,4 +52,5 @@
 <br>
 
 <a href="PS2-2.html">Go Back</a>
+
 </html>
