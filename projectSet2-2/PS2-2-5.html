@@ -64,13 +64,10 @@
 
         let optionsHTML = '';
 
-        states.forEach((state, index) => {
-
-            const isSelected = index === 0 ? ' selected' : '';
-
-            optionsHTML += `<option value="${state}"${isSelected}>${state}</option>`;
+        for (let i = 0; i < states.length; i++) {
+            const isSelected = i === 0 ? ' selected' : '';
+            optionsHTML += '<option value="' + states[i] + '"' + isSelected + '>' + states[i] + '</option>';
         }
-        );
         selectList.innerHTML = optionsHTML;
 
 
@@ -78,7 +75,7 @@
             const selectedState = selectList.options[selectList.selectedIndex].text;
 
             const statesDisplay = document.getElementById("statesDisplay");
-            statesDisplay.innerHTML += `<div>${selectedState}</div>`;
+            statesDisplay.innerHTML += '<div>' + selectedState + '</div>';
 
 
         }
