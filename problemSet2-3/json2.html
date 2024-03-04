@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>json2</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
 </head>
 
 <body>
@@ -13,19 +14,25 @@
 
     <div id="songs"></div>
 
-    <script>
+    <script language="javascript">
+        
         $.get('songs.json', function (data) {
-            var songs = JSON.parse(data);
-            var content = "";
-            songs.forEach(function (song) {
-                content += `<p><strong>${song.title}</strong><br>Artist: ${song.artist}<br>Genre: ${song.genre.join(", ")}<br>Released ${song.year}</p>`;
-            });
-            $('#songs').html(content);
+            content = "<ul>";
+            data.forEach(function (songs) {
+                content += "<li>"
+                    + "<strong>" + songs.title + "</strong>" + "<br>"
+                    + "Artist: " + songs.artist + "<br>"
+                    + "Genre: " + songs.genres + "<br>"
+                    + "Released: " + songs.year + "<br><br>"
+                    + "</li>";
+            })
+            content += "</ul>";
+            document.getElementById('json-songs').innerHTML = content;
         });
 
 
     </script>
-
+        <div id="json-songs">&nbsp;</div>
 </body>
 
 </html>
