@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>json2</title>
+</head>
+
+<body>
+    <h1>Songs - json2</h1>
+
+    <div id="songs"></div>
+
+    <script>
+        $.get('songs.json', function (data) {
+            var songs = JSON.parse(data);
+            var content = "";
+            songs.forEach(function (song) {
+                content += `<p><strong>${song.title}</strong><br>Artist: ${song.artist}<br>Genre: ${song.genre.join(", ")}<br>Released ${song.year}</p>`;
+            });
+            $('#songs').html(content);
+        });
+
+
+    </script>
+
+</body>
+
+</html>
