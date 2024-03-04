@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>json1</title>
+</head>
+
+<body>
+    <script>
+
+
+        var songs_json = {
+            songs: [
+                { "title": "Shape of You", "artist": "Ed Sheeran", "year": 2017, "genre": ["Pop"] },
+                { "title": "Believer", "artist": "Imagine Dragons", "year": 2017, "genre": ["Rock", "Pop"] },
+                { "title": "Thunder", "artist": "Imagine Dragons", "year": 2017, "genre": ["Rock"] },
+                { "title": "Hotel California", "artist": "Eagles", "year": 1976, "genre": ["Rock"] },
+                { "title": "Bohemian Rhapsody", "artist": "Queen", "year": 1975, "genre": ["Rock"] },
+                { "title": "Country Roads", "artist": "John Denver", "year": 1971, "genre": ["Country"] },
+                { "title": "Jolene", "artist": "Dolly Parton", "year": 1973, "genre": ["Country"] },
+                { "title": "Stairway to Heaven", "artist": "Led Zeppelin", "year": 1971, "genre": ["Rock"] },
+                { "title": "Thriller", "artist": "Michael Jackson", "year": 1982, "genre": ["Pop"] },
+                { "title": "Sweet Child o' Mine", "artist": "Guns N' Roses", "year": 1987, "genre": ["Rock", "Hard Rock"] }
+            ]
+        }
+
+
+        //display songs
+        var display_songs = JSON.stringify(songs_json);
+        document.write(display_songs);
+
+
+
+    </script>
+
+    <h1>JSON List - json1</h1>
+
+
+
+</body>
+
+</html>
