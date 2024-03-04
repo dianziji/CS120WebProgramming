@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>json3</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+</head>
+<body>
+    <h1>Song filter</h1>
+
+    <div class="container">
+        <form action="">
+            <label for="title">Select a genre</label>
+            <select name="genre" id="genre_list" ></select>
+            <input type="button" value="filter" id="filter">
+
+        </form>
+    
+    <div class="selected-songs">&nbsp;</div>
+    </div>
+
+
+    <script language="javascript">
+        $(document).ready(function() {
+            //get genre drop down list
+            $.get('songs.json', function(songs) {
+                var genre_list = [];
+
+                songs.forEach(function(song) {
+                    song.genre.forEach(function(genre) {
+                        if (!genre_list.includes(genre)) {
+                            genre_list.push(genre);
+                            $('#genre_list').append($('<option>').text(genre).val(genre)); 
+                        }
+                    });
+                });
+    
+                // Event handler - filter on click
+                $('#filter').click(function() {
+                    var selected_genre = $('#genre_list').val();
+                    var song_list_with_genre = "<ul>";
+                    songs.forEach(function(song) {
+                        if (song.genre.includes(selected_genre)) { 
+                            song_list_with_genre += "<li>" + song.title + "</li>";
+                        }
+                    });
+                    song_list_with_genre += "</ul>";
+                    
+                    $('.selected-songs').html(song_list_with_genre); 
+            });
+        });
+    });
+    </script>
+    
+
+</body>
+</html>
