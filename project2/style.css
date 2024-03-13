@@ -19,7 +19,7 @@ body{
 
 }
 
-#wordle_container{
+.wordle-row{
     display: flex;
     justify-content: space-evenly;
     border: 1px black solid;
@@ -73,9 +73,10 @@ body{
 }
 
 
-.letter1{
+.letter{
+    padding: 20px;
     background:gray;
-    
+    border: 2px solid black;
 }
 .letter2{
     
