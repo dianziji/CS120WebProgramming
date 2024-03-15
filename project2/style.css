@@ -1,114 +1,104 @@
-body{
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: blanchedalmond;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+body {
+  font-family: Helvetica;
+  background-color: rgb(68, 59, 59);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: aliceblue;
 }
 
-
-#base_container{
-    border: 1px black solid;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 10px;
-    justify-content:center;
-    width: 600px;
-
+h1,
+label {
+  color: rgb(236, 232, 232);
 }
 
-#wordle_container{
-    display: flex;
-    justify-content: space-evenly;
-    border: 1px black solid;
-    
-    margin-top: 10px;
-    
-    width: 400px;
-    
+#base_container {
+  /* border: 1px black solid; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+  justify-content: center;
+  width: 600px;
 }
 
+.wordle-row {
+  display: flex;
+  justify-content: space-evenly;
+  /* border: 1px palevioletred solid; */
 
-.wordle-input-row1{
-    padding: 30px;
-    margin: 5px;
-    border: 1px palevioletred solid;
-    justify-content:space-evenly;
-}
-
-.wordle-input-row2{
-    padding: 30px;
-    margin: 5px;
-    border: 1px palevioletred solid;
-    justify-content:space-evenly;
-}
-.wordle-input-row3{
-    padding: 30px;
-    margin: 5px;
-    border: 1px palevioletred solid;
-    justify-content:space-evenly;
+  width: 400px;
 }
 
-.wordle-input-row4{
-    padding: 30px;
-    margin: 5px;
-    border: 1px palevioletred solid;
-    justify-content:space-evenly;
+.wordle-input-row1 {
+  padding: 15px;
+  margin-top: 5px;
 }
 
-.wordle-input-row5{
-    padding: 30px;
-    margin: 5px;
-    border: 1px palevioletred solid;
-    justify-content:space-evenly;
+.wordle-input-row2 {
+  padding: 15px;
+  margin-top: 5px;
+}
+.wordle-input-row3 {
+  padding: 15px;
+  margin-top: 5px;
 }
 
-.wordle-input-row6{
-    padding: 30px;
-    margin: 5px;
-    border: 1px palevioletred solid;
-    justify-content:space-evenly;
+.wordle-input-row4 {
+  padding: 15px;
+  margin-top: 5px;
 }
 
-
-.letter1{
-    background:gray;
-    
-}
-.letter2{
-    
-    background: gray;
-    
-}
-.letter3{
-    background: gray;
-    
-}
-.letter4{
-    
-    background: gray;
-   
-}
-.letter5{
-    background: gray;
-    
-}
-.letter6{
-    
-    background: gray;
-    
+.wordle-input-row5 {
+  padding: 15px;
+  margin-top: 5px;
 }
 
-#input_guess{
-    margin-top: 20px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.wordle-input-row6 {
+  padding: 15px;
+  margin-top: 5px;
 }
 
-.button{
-    margin-top: 10px;
+.letter {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  border-radius: 100%;
+  background: rgb(236, 232, 232);
+  border: 2px solid rgb(143, 143, 143);
+  font-size: 24px;
+}
+
+.correct {
+  background-color: rgb(128, 180, 104); /* Letters in the correct place */
+}
+
+.wrong-place {
+  background-color: rgb(
+    209,
+    207,
+    89
+  ); /* Letters in the answer but in the wrong place */
+}
+
+.not-in-word {
+  background-color: rgb(187, 180, 180); /* Letters not in the word */
+}
+
+#input_guess {
+  margin-top: 20px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.button {
+  margin-top: 10px;
+  border-radius: 5px;
 }
