@@ -3,7 +3,7 @@
 $n = $_GET['n'];
 
 
-echo "<h2>Times table for $n</h2>";
+echo "<h2>Times table of $n</h2>";
 
 for( $i = 1; $i <= 12; $i++){
     $result = $i * $n;
