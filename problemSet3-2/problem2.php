@@ -16,7 +16,7 @@ function displayOfficeHours($officeHours) {
 
     foreach ($officeHours as $day => $time) {
 
-    $result .= "<p>". $day .": ". $time ."</p>";
+    $result .= "<div class='day-time'><div class='day'>{$day}:</div> <div class='time'>{$time}</div></div>";
     
 
 }
@@ -42,9 +42,24 @@ echo displayOfficeHours($officeHours);
     <style>
         #hours{
 
-            text-align:left;
             font-family: Arial;
+           
         }
+
+        .day-time{
+            display: flex;
+            justify-content: space-between;
+            margin-top: 5px;
+        }
+        .days{
+            
+            flex-basis: 90%;
+
+        }
+        .time{
+            flex-basis: 90%;
+        }
+
 
     </style>
     
