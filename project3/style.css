@@ -7,9 +7,15 @@ body {
 
 header,
 footer {
+    
   text-align: center;
   padding: 1em;
   background-color: #f4f4f4;
+}
+
+header img {
+  height: 60px;
+
 }
 
 nav ul {
@@ -31,22 +37,25 @@ main {
   padding: 20px;
 }
 
-.product-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+.products-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Creates three columns */
+  gap: 20px; /* Adjust the gap between grid items */
+  justify-content: center;
+  padding: 20px; /* Optional: Adds some padding around the grid */
 }
 
 .product {
-  border: 1px solid #ddd;
-  margin: 10px;
-  padding: 10px;
-  width: calc(33% - 20px);
+  margin: 20px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 2px; /* Optional: adds a subtle shadow around products */
   text-align: center;
+  border-radius: 8px;
 }
 
 .product img {
-  max-width: 100%;
+  max-width: 300px;
   height: auto;
 }
 
@@ -56,13 +65,15 @@ main {
 
 .price-and-quantity {
   display: flex;
-  align-items: center; 
+  align-items: center;
 }
 
 button {
   background-color: #5cb85c;
+
   color: white;
-  border: none;
+  border-style: none;
+  border-radius: 8px;
   padding: 10px 20px;
   margin-top: 10px;
   cursor: pointer;
