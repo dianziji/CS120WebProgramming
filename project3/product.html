@@ -1,11 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>product</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    
+
+
+    <header>
+        <h1>EcoTrend Totes</h1>
+
+        <nav>
+            <ul>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="orders.html">Orders</a></li>
+            </ul>
+        </nav>
+
+    </header>
+
+
+
+    <main>
+        <section class="product-list">
+            <div class="product">
+
+                <!-- need use php to bring each product from db and dump to here -->
+
+                <img src="images/duck_bag.png" alt="duck">
+                <h2>The Duck</h2>
+
+                <!-- need align price with drop down list -->
+
+                <div class="price-and-quantity">
+                    <p>$19.99</p>
+
+                    <!-- use php to make the select list to 5 items -->
+                    <select class="quantity">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <!-- Add more options as needed -->
+                    </select>
+                </div>
+                <!-- use js to manage client side -->
+                <button class="add-to-cart">Add to Cart</button>
+                <button class="more-info">More</button>
+                <div class="description" style="display: none;">
+                    Product description here...
+                </div>
+            </div>
+            <!-- Repeat for each product -->
+        </section>
+    </main>
+
+
+    <footer>
+        <h2>EcoTrend Totes</h2>
+        <p>Welcome to EcoTrend Totes - where fashion embraces sustainability! Discover our stylish collection of
+            eco-friendly tote bags made from 100% recycled materials. Perfect for every occasion, our totes are designed
+            for the eco-conscious shopper with a flair for style. Shop now and carry a piece of sustainability wherever
+            you go!</p>
+        <p>&copy; 2024 Shuo Yang</p>
+    </footer>
+
+
+
+
+    <script src="productScript.js"></script>
+
 </body>
+
 </html>
