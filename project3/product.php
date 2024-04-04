@@ -23,9 +23,9 @@
         <h1>EcoTrend Totes</h1>
         <nav>
             <ul>
-                <li><a href="products.html">Products</a></li>
-                <li><a href="cart.html">Cart</a></li>
-                <li><a href="orders.html">Orders</a></li>
+                <li><a href="product.php">Products</a></li>
+                <li><a href="cart.php">Cart</a></li>
+                <li><a href="orders.php">Orders</a></li>
             </ul>
         </nav>
 
@@ -39,7 +39,7 @@
                 <?php while($product = $productResult->fetch_assoc()): ?>
                 <div class="product">
                     <img src="<?= htmlspecialchars($product['image_url']) ?>"
-                        alt="<?= htmlspecialchars($product['name']) ?>" style="width: 100%; height: auto;">
+                        alt="<?= htmlspecialchars($product['name']) ?>">
                     <h2>
                         <?= htmlspecialchars($product['name']) ?>
                     </h2>
