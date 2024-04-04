@@ -13,20 +13,25 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".add-to-cart-btn").forEach((button) => {
     button.addEventListener("click", function () {
       const productId = this.getAttribute("data-product-id");
-      const quantitySelector =
-        this.previousElementSibling.previousElementSibling; // Assuming the select element is two elements before the button
-      const quantity = parseInt(quantitySelector.value);
+      const productItem = this.closest(".product");
+      const quantitySelector = productItem.querySelector(".quantity-select");
+      const quantity = parseInt(quantitySelector.value, 10);
+      const name = productItem.querySelector("h2").textContent; 
+      const priceText = productItem.querySelector("p").textContent;
+      const price = parseFloat(priceText.replace("$", ""));
 
       // Retrieve the existing cart from local storage or initialize a new one
       let cart = JSON.parse(localStorage.getItem("cart")) || {};
 
-      // Update the cart. If the product is already in the cart, increase the quantity; otherwise, add the new product
-      if (cart[productId]) {
-        cart[productId] += quantity;
-      } else {
-        cart[productId] = quantity;
+      if (!cart[productId]) {
+        cart[productId] = {
+          quantity: quantity,
+          name: name,
+          price: price,
+        };
       }
 
+      console.log(JSON.stringify(cart));
       // Save the updated cart to local storage
       localStorage.setItem("cart", JSON.stringify(cart));
       // change button color and text after click
