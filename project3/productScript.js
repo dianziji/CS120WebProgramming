@@ -16,10 +16,10 @@ document.addEventListener("DOMContentLoaded", () => {
       const productItem = this.closest(".product");
       const quantitySelector = productItem.querySelector(".quantity-select");
       const quantity = parseInt(quantitySelector.value, 10);
-      const name = productItem.querySelector("h2").textContent; 
+      let name = productItem.querySelector("h2").textContent;
       const priceText = productItem.querySelector("p").textContent;
       const price = parseFloat(priceText.replace("$", ""));
-
+      name = name.trim();
       // Retrieve the existing cart from local storage or initialize a new one
       let cart = JSON.parse(localStorage.getItem("cart")) || {};
 
@@ -29,9 +29,8 @@ document.addEventListener("DOMContentLoaded", () => {
           name: name,
           price: price,
         };
-      }else{
-        cart[productId].quantity  += quantity
-          
+      } else {
+        cart[productId].quantity += quantity;
       }
 
       console.log(JSON.stringify(cart));
