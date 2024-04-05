@@ -11,6 +11,10 @@ document.addEventListener("DOMContentLoaded", () => {
   // Example checkout button functionality - adjust according to your needs
   document.getElementById("checkOut").addEventListener("click", function () {
     // Logic to handle checkout could go here
+
+    
+
+
     window.location.href = "thankYou.php"; // Redirect to a thank you page
   });
 });
@@ -22,16 +26,13 @@ function renderCartItems() {
   Object.keys(cart).forEach((productId) => {
     const { name, price, quantity } = cart[productId];
     const itemCost = price * quantity;
-
-    // Create a table row (tr) instead of a div
     const itemRow = document.createElement("tr");
     itemRow.innerHTML = `
-            <td>${name}</td>
-            <td>${quantity}</td>
-            <td>$${price.toFixed(2)}</td>
-            
-            <td><button onclick="removeFromCart('${productId}')">Remove</button></td>
-        `;
+        <td>${name}</td>
+        <td><input type="number" value="${quantity}" min="1" class="cart-quantity" data-product-id="${productId}"></td>
+        <td class="item-total">$${(price * quantity).toFixed(2)}</td>
+        <td><button onclick="removeFromCart('${productId}')">Remove</button></td>
+    `;
 
     cartContainer.appendChild(itemRow);
   });
@@ -49,6 +50,29 @@ function renderCartItems() {
     `;
   cartContainer.appendChild(totalRow);
 }
+
+
+
+  const cartContainer = document.getElementById("cartItemsContainer");
+  
+  cartContainer.addEventListener("change", function(event) {
+      if (event.target.classList.contains("cart-quantity")) {
+          const productId = event.target.dataset.productId;
+          const newQuantity = parseInt(event.target.value, 10);
+          updateCartQuantity(productId, newQuantity);
+      }
+  });
+
+
+function updateCartQuantity(productId, quantity) {
+  let cart = JSON.parse(localStorage.getItem("cart")) || {};
+  if (cart[productId] && quantity >= 1) {
+      cart[productId].quantity = quantity;
+      localStorage.setItem("cart", JSON.stringify(cart));
+      renderCartItems(); // Re-render the cart to update totals
+  }
+}
+
 // function renderCartItems() {
 //   const cart = JSON.parse(localStorage.getItem("cart")) || {};
 //   const cartContainer = document.getElementById("cartContainer");

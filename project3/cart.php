@@ -30,8 +30,7 @@
         <tr>
             <th>Product Name</th>
             <th>Quantity</th>
-            <th>Price</th>
-            
+            <th>Price</th>           
             <th>&nbsp;</th>
         </tr>
     </thead>
