@@ -29,6 +29,9 @@ document.addEventListener("DOMContentLoaded", () => {
           name: name,
           price: price,
         };
+      }else{
+        cart[productId].quantity  += quantity
+          
       }
 
       console.log(JSON.stringify(cart));
