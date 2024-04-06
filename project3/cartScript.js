@@ -8,44 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
       window.location.assign("product.php"); // Navigate back to the products page
     });
 
-  // document.getElementById("checkOut").addEventListener("click", function () {
-  //   const cart = JSON.parse(localStorage.getItem("cart")) || {};
-
-  //   if (Object.keys(cart).length === 0) {
-  //     alert("Your cart is empty!");
-  //     return;
-  //   }
-  //   // console.log(JSON.stringify({ cart }));
-  //   fetch("processCheckout.php", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({ cart }),
-  //     // Directly use the parsed cart object
-  //   })
-  //     .then((response) => {
-  //       if (!response.ok) {
-  //         throw new Error(`HTTP error, status = ${response.status}`);
-  //       }
-  //       return response.json();
-  //     })
-  //     .then((data) => {
-  //       if (data.success) {
-  //         // Handle successful checkout
-  //         localStorage.clear();
-  //         window.location.href = "thankYou.php";
-  //       } else {
-  //         // Handle server-reported issue
-  //         console.error("Checkout failed:", data.message);
-  //         alert("Checkout failed. Please try again.");
-  //       }
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error during fetch or processing:", error);
-  //       alert("An error occurred. Please try again.");
-  //     });
-  // });
   document.getElementById("checkOut").addEventListener("click", function () {
     var cart = JSON.parse(localStorage.getItem("cart")) || {};
 
@@ -53,6 +15,16 @@ document.addEventListener("DOMContentLoaded", () => {
       alert("Your cart is empty!");
       return;
     }
+
+    // Calculate total cost from cart items
+    const totalCost = Object.values(cart).reduce(
+      (total, item) => total + item.price * item.quantity,
+      0
+    );
+
+    // Store the total order cost in Local Storage
+    localStorage.setItem("orderTotal", totalCost.toFixed(2));
+
     console.log(JSON.stringify({ cart }));
 
     //for testing
@@ -64,22 +36,27 @@ document.addEventListener("DOMContentLoaded", () => {
     //   ],
     // };
 
+    // var hardcodedJson = [
+    //   { product_id: 1, quantity: 1, name: "The Duck", price: 24.99 },
+    //   { product_id: 2, quantity: 1, name: "The Butterfly", price: 24.99 },
+    //   { product_id: 4, quantity: 1, name: "The Forest", price: 24.99 },
+    // ];
+
     $.ajax({
-      url: "new.php",
+      url: "processCheckout.php",
       type: "POST",
       contentType: "application/json", // Specifies the content type.
       dataType: "json",
 
       //for testing
       // data: JSON.stringify({ hardcodedJson }),
-
       data: JSON.stringify({ cart }),
       // Converts the cart object to a JSON string.
       success: function (response) {
         // The request is successful and you can check the response from the server
         if (response.success) {
           // Handle successful checkout
-          localStorage.clear(); // Clears the localStorage
+          // localStorage.clear(); // Clears the localStorage
           window.location.href = "thankYou.php"; // Redirects to the thank you page
         } else {
           // Server responded with success: false
