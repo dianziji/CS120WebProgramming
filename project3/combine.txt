@@ -1,0 +1,888 @@
+CS120 Web project3
+
+product.php file
+
+___________________________________________________________
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>product</title>
+    <link rel="stylesheet" href="style.css">
+
+    <?php include 'db.php';?>
+
+</head>
+
+<body>
+
+
+    <header>
+        
+    <img src="images/tote-bag-logo.png" alt="EcoTrend Totes Logo">
+        <h1>EcoTrend Totes</h1>
+        <nav>
+            <ul>
+                <li><a href="product.php">Products</a></li>
+                <li><a href="cart.php">Cart</a></li>
+                <li><a href="orders.php">Orders</a></li>
+            </ul>
+        </nav>
+
+    </header>
+
+
+
+    <main>
+        <section class="product-list">
+            <div class="products-container">
+                <?php while($product = $productResult->fetch_assoc()): ?>
+                <div class="product">
+                    <img src="<?= htmlspecialchars($product['image_url']) ?>"
+                        alt="<?= htmlspecialchars($product['name']) ?>">
+                    <h2>
+                        <?= htmlspecialchars($product['name']) ?>
+                    </h2>
+                    <p>$
+                        <?= htmlspecialchars($product['price']) ?>
+                    </p>
+                    <select name="quantity" class="quantity-select">
+                        <?php for ($i = 1; $i <= 5; $i++): ?>
+                        <option value="<?= $i ?>">
+                            <?= $i ?>
+                        </option>
+                        <?php endfor; ?>
+                    </select>
+                    <button class="more-info-btn">More</button>
+                    <div class="description" style="display:none;">
+                        <?= htmlspecialchars($product['description']) ?>
+                    </div>
+                    <button class="add-to-cart-btn" data-product-id="<?= $product['product_id'] ?>">Add to Cart</button>
+                </div>
+                <?php endwhile; ?>
+            </div>
+        </section>
+    </main>
+
+
+    <footer>
+        <h2>EcoTrend Totes</h2>
+        <p>Welcome to EcoTrend Totes - where fashion embraces sustainability! Discover our stylish collection of
+            eco-friendly tote bags made from 100% recycled materials. Perfect for every occasion, our totes are designed
+            for the eco-conscious shopper with a flair for style. Shop now and carry a piece of sustainability wherever
+            you go!</p>
+        <p>&copy; 2024 Shuo Yang</p>
+    </footer>
+
+
+
+
+    <script src="productScript.js"></script>
+
+</body>
+
+</html>
+
+
+___________________________________________________________
+
+
+productScript.js
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Handle "More" button clicks to toggle product descriptions
+  document.querySelectorAll(".more-info-btn").forEach((button) => {
+    button.addEventListener("click", function () {
+      console.log("More button clicked");
+      const description = this.nextElementSibling;
+      description.style.display =
+        description.style.display === "none" ? "block" : "none";
+    });
+  });
+
+  // Handle "Add to Cart" button clicks
+  document.querySelectorAll(".add-to-cart-btn").forEach((button) => {
+    button.addEventListener("click", function () {
+      const productId = this.getAttribute("data-product-id");
+      const productItem = this.closest(".product");
+      const quantitySelector = productItem.querySelector(".quantity-select");
+      const quantity = parseInt(quantitySelector.value, 10);
+      let name = productItem.querySelector("h2").textContent;
+      const priceText = productItem.querySelector("p").textContent;
+      const price = parseFloat(priceText.replace("$", ""));
+      name = name.trim();
+      // Retrieve the existing cart from local storage or initialize a new one
+      let cart = JSON.parse(localStorage.getItem("cart")) || {};
+
+      if (!cart[productId]) {
+        cart[productId] = {
+          quantity: quantity,
+          name: name,
+          price: price,
+        };
+      } else {
+        cart[productId].quantity += quantity;
+      }
+
+      console.log(JSON.stringify(cart));
+      // Save the updated cart to local storage
+      localStorage.setItem("cart", JSON.stringify(cart));
+      // change button color and text after click
+      this.style.backgroundColor = "#415c54";
+      this.style.color = "#fff";
+      this.textContent = "Added";
+
+      this.disabled = true;
+    });
+  });
+});
+
+
+___________________________________________________________
+
+cart.php
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cart</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+<body>
+
+<header>
+        
+    <img src="images/tote-bag-logo.png" alt="EcoTrend Totes Logo">
+    <h1>EcoTrend Totes</h1>
+    <nav>
+        <ul>
+            <li><a href="product.php">Products</a></li>
+            <li><a href="cart.php">Cart</a></li>
+            <li><a href="orders.php">Orders</a></li>
+        </ul>
+    </nav>
+
+</header>
+
+
+<main id="cartContainer">
+    
+<table id="cartTable">
+    <thead>
+        <tr>
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>Price</th>           
+            <th>&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody id="cartItemsContainer">
+        <!-- Cart items will be inserted here -->
+    </tbody>
+</table>
+</main>
+
+
+
+
+<div class='end_btn'>
+    <button id="continueShopping">Continue Shopping</button>
+    <button id="checkOut">Check Out</button>
+</div>
+
+<footer>
+    <h2>EcoTrend Totes</h2>
+    <p>Welcome to EcoTrend Totes - where fashion embraces sustainability! Discover our stylish collection of
+            eco-friendly tote bags made from 100% recycled materials. Perfect for every occasion, our totes are designed
+            for the eco-conscious shopper with a flair for style. Shop now and carry a piece of sustainability wherever
+            you go!</p>
+        <p>&copy; 2024 Shuo Yang</p>
+    </footer>
+
+
+    <script src="cartScript.js"></script>
+</body>
+</html>
+
+
+___________________________________________________________
+
+
+cartScript.js
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  renderCartItems();
+
+  document
+    .getElementById("continueShopping")
+    .addEventListener("click", function () {
+      console.log("continueShopping button clicked");
+      window.location.assign("product.php"); // Navigate back to the products page
+    });
+
+  document.getElementById("checkOut").addEventListener("click", function () {
+    var cart = JSON.parse(localStorage.getItem("cart")) || {};
+
+    if (Object.keys(cart).length === 0) {
+      alert("Your cart is empty!");
+      return;
+    }
+
+    // Calculate total cost from cart items
+    const totalCost = Object.values(cart).reduce(
+      (total, item) => total + item.price * item.quantity,
+      0
+    );
+
+    // Store the total order cost in Local Storage
+    localStorage.setItem("orderTotal", totalCost.toFixed(2));
+
+    console.log(JSON.stringify({ cart }));
+
+    $.ajax({
+      url: "processCheckout.php",
+      type: "POST",
+      contentType: "application/json", // Specifies the content type.
+      dataType: "json",
+
+      //for testing
+      // data: JSON.stringify({ hardcodedJson }),
+      data: JSON.stringify({ cart }),
+      // Converts the cart object to a JSON string.
+      success: function (response) {
+        // The request is successful and you can check the response from the server
+        if (response.success) {
+          // Handle successful checkout
+          // localStorage.clear(); // Clears the localStorage
+          window.location.href = "thankYou.php"; // Redirects to the thank you page
+        } else {
+          // Server responded with success: false
+          console.error("Checkout failed:", response.message);
+          alert("Checkout failed. Please try again.");
+        }
+      },
+      error: function (xhr, status, error) {
+        // There was an error with the request
+        console.error("Error during fetch or processing:", error);
+        alert("An error occurred. Please try again.");
+      },
+    });
+  });
+
+  function renderCartItems() {
+    const cart = JSON.parse(localStorage.getItem("cart")) || {};
+    const cartContainer = document.getElementById("cartItemsContainer");
+    cartContainer.innerHTML = ""; // Clear existing items
+
+    Object.keys(cart).forEach((productId) => {
+      const { name, price, quantity } = cart[productId];
+      const itemCost = price * quantity;
+      const itemRow = document.createElement("tr");
+      itemRow.innerHTML = `
+        <td>${name}</td>
+        <td><input type="number" value="${quantity}" min="1" class="cart-quantity" data-product-id="${productId}"></td>
+        <td class="item-total">$${(price * quantity).toFixed(2)}</td>
+        <td><button onclick="removeFromCart('${productId}')">Remove</button></td>
+    `;
+
+      cartContainer.appendChild(itemRow);
+    });
+
+    const totalCost = Object.values(cart).reduce(
+      (total, item) => total + item.price * item.quantity,
+      0
+    );
+    const totalRow = document.createElement("tr");
+    totalRow.innerHTML = `
+        <td colspan="2">Total Cost</td>
+        <td>$${totalCost.toFixed(2)}</td>
+        <td></td>
+    `;
+    cartContainer.appendChild(totalRow);
+  }
+
+  const cartContainer = document.getElementById("cartItemsContainer");
+
+  cartContainer.addEventListener("change", function (event) {
+    if (event.target.classList.contains("cart-quantity")) {
+      const productId = event.target.dataset.productId;
+      const newQuantity = parseInt(event.target.value, 10);
+      updateCartQuantity(productId, newQuantity);
+    }
+  });
+
+  function updateCartQuantity(productId, quantity) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || {};
+    if (cart[productId] && quantity >= 1) {
+      cart[productId].quantity = quantity;
+      localStorage.setItem("cart", JSON.stringify(cart));
+      renderCartItems(); // Re-render the cart to update totals
+    }
+  }
+
+  function removeFromCart(productId) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || {};
+    if (cart[productId]) {
+      delete cart[productId];
+      localStorage.setItem("cart", JSON.stringify(cart));
+      renderCartItems(); // Re-render the cart to reflect the removed item
+    }
+  }
+});
+
+
+___________________________________________________________
+
+processCheckout.php   --- helper php file
+
+<?php
+header('Content-Type: application/json');
+
+
+include 'db.php'; // Your database connection setup
+
+$json = file_get_contents('php://input');
+
+// Converts it into a PHP object
+$data = json_decode($json, true);
+
+
+// Check if the cart data is correctly structured and not empty
+if (empty($data['cart'])) {
+    // If the cart is empty or not set, send an appropriate response
+    echo json_encode(['success' => false, 'message' => 'Cart is empty']);
+    exit;
+}
+if (!isset($data['cart'])) {
+    // If the cart is empty or not set, send an appropriate response
+    echo json_encode(['success' => false, 'message' => 'isset issue']);
+    exit;
+}
+
+
+$conn->begin_transaction();
+
+try {
+    $stmt = $conn->prepare("INSERT INTO orders (date_ordered) VALUES (NOW())");
+    $stmt->execute();
+    $order_id = $conn->insert_id;
+
+    $stmtItem = $conn->prepare("INSERT INTO order_items (order_id, product_id, quantity) VALUES (?, ?, ?)");
+
+    foreach ($data['cart'] as $product_id => $item) {
+        // Validate and sanitize input
+        $quantity = $item['quantity'];
+
+        
+        // Insert the order item
+        $stmtItem->bind_param("iii", $order_id, $product_id, $quantity);
+        $stmtItem->execute();
+
+    }
+
+
+
+
+    $conn->commit();
+
+    $response = [
+        'success' => true,
+        'message' => 'Data received successfully',
+    ];
+
+    echo json_encode($response);
+
+
+} catch (Exception $e) {
+    $conn->rollback();
+    echo json_encode(['success' => false, 'message' => 'Checkout failed: ' . $e->getMessage()]);
+}
+
+
+$conn->close();
+
+// ?>
+
+
+___________________________________________________________
+
+Thankyou.php
+
+<?php
+// Assuming order total and ship date are passed as query parameters for simplicity
+// $orderTotal = $_GET['total'] ?? 'N/A';
+$shipDate = new DateTime('+2 days');
+
+include 'db.php';
+
+?>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>thank you</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+        
+    <img src="images/tote-bag-logo.png" alt="EcoTrend Totes Logo">
+    <h1>EcoTrend Totes</h1>
+    <nav>
+        <ul>
+            <li><a href="product.php">Products</a></li>
+            <li><a href="cart.php">Cart</a></li>
+            <li><a href="orders.php">Orders</a></li>
+        </ul>
+    </nav>
+    <style>
+        /* Centering the content with Flexbox */
+
+
+    </style>
+</header>
+
+<main>
+    <div id="thankyoucontainer">
+    <h1>Thank You for Your Order!</h1>
+    <p>Your order total is: $<span id="orderTotal"></span></p>
+    <p>Expected Ship Date: <?= htmlspecialchars($shipDate->format('Y-m-d')) ?></p>
+    <a href="product.php">Continue Shopping</a>
+    </div>
+</main>
+
+    <footer>
+    <h2>EcoTrend Totes</h2>
+    <p>Welcome to EcoTrend Totes - where fashion embraces sustainability! Discover our stylish collection of
+            eco-friendly tote bags made from 100% recycled materials. Perfect for every occasion, our totes are designed
+            for the eco-conscious shopper with a flair for style. Shop now and carry a piece of sustainability wherever
+            you go!</p>
+        <p>&copy; 2024 Shuo Yang</p>
+    </footer>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Retrieve the total order cost from Local Storage
+            const orderTotal = localStorage.getItem('orderTotal');
+            document.getElementById('orderTotal').textContent = orderTotal;
+
+            localStorage.clear(); 
+
+        });
+    </script>
+
+</body>
+
+</html>
+
+
+___________________________________________________________
+
+
+order.php
+
+<?php
+
+include 'db.php';
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>order page</title>
+    <link rel="stylesheet" href="order_style.css">
+</head>
+<body>
+    
+<header>
+        <img src="images/tote-bag-logo.png" alt="EcoTrend Totes Logo">
+        <h1>EcoTrend Totes</h1>
+        <nav>
+            <ul>
+                <li><a href="product.php">Products</a></li>
+                <li><a href="cart.php">Cart</a></li>
+                <li><a href="orders.php">Orders</a></li>
+            </ul>
+        </nav>
+    
+    </header>
+
+    <main>
+    <div class="order-container">
+        <?php
+        // Your existing PHP and MySQL connection setup
+
+        $orderSQL = "SELECT order_id, date_ordered FROM orders ORDER BY order_id DESC";
+        $orderResult = $conn->query($orderSQL);
+
+        if ($orderResult->num_rows > 0) {
+            while ($order = $orderResult->fetch_assoc()) {
+                echo "<div class='order-header'>";
+                echo "<h2>Order #" . htmlspecialchars($order["order_id"]) . "</h2>";
+                echo "<p>Date Ordered: " . htmlspecialchars($order["date_ordered"]) . "</p>";
+                echo "</div>";
+
+                $orderItemsSQL = "SELECT oi.order_id, oi.product_id, oi.quantity, p.name, p.price FROM order_items oi JOIN products p ON oi.product_id = p.product_id WHERE oi.order_id = " . $order["order_id"];
+                $orderItemsResult = $conn->query($orderItemsSQL);
+
+                if ($orderItemsResult->num_rows > 0) {
+                    echo "<table>";
+                    echo "<thead>";
+                    echo "<tr><th>Product Name</th><th>Quantity</th><th>Cost</th></tr>";
+                    echo "</thead>";
+                    echo "<tbody>";
+                    while ($item = $orderItemsResult->fetch_assoc()) {
+                        echo "<tr>";
+                        echo "<td>" . htmlspecialchars($item["name"]) . "</td>";
+                        echo "<td>" . htmlspecialchars($item["quantity"]) . "</td>";
+                        echo "<td>$" . htmlspecialchars(number_format($item["price"] * $item["quantity"], 2)) . "</td>";
+                        echo "</tr>";
+                    }
+                    echo "</tbody>";
+                    echo "</table>";
+                } else {
+                    echo "<p>No items found for this order.</p>";
+                }
+            }
+        } else {
+            echo "<p>No orders found.</p>";
+        }
+
+
+        ?>
+            <a href="product.php" class="continue-shopping">Continue Shopping</a>
+    </div>
+
+</main>
+
+    
+
+
+
+<footer>
+    <h2>EcoTrend Totes</h2>
+    <p>Welcome to EcoTrend Totes - where fashion embraces sustainability! Discover our stylish collection of
+            eco-friendly tote bags made from 100% recycled materials. Perfect for every occasion, our totes are designed
+            for the eco-conscious shopper with a flair for style. Shop now and carry a piece of sustainability wherever
+            you go!</p>
+        <p>&copy; 2024 Shuo Yang</p>
+    </footer>
+
+</body>
+</html>
+
+
+___________________________________________________________
+
+
+db.php
+
+<?php
+
+//establish connection info
+$server = "shuoy.sgedu.site"; // your server
+$userid = "ulccatdvz74vl"; // your user id
+$pw = "lldo8we0gwbt"; // your pw
+$db = "dbkvhxs8xwd2gd"; // your database
+
+// Create connection
+$conn = new mysqli($server, $userid, $pw, $db); // You can directly pass $db here
+
+// SQL query to fetch all products
+$productSQL = "SELECT product_id, name, price, description, image_url FROM products";
+$productResult = $conn->query($productSQL);
+
+
+$orderSQL = "SELECT order_id, date_ordered FROM orders";
+$orderResult = $conn->query($orderSQL);
+
+
+$orderItemsSQL = "SELECT order_id, product_id, quantity FROM order_items";
+$orderItemsResult = $conn->query($orderItemsSQL);
+
+?>
+
+
+___________________________________________________________
+
+
+style.css
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header,
+footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #f4f4f4;
+}
+
+header img {
+  height: 60px;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin: 0 15px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+  padding: 20px;
+}
+
+.products-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.product {
+  margin: 20px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.product img {
+  max-width: 300px;
+  height: auto;
+}
+
+.price {
+  font-weight: bold;
+}
+
+.price-and-quantity {
+  display: flex;
+  align-items: center;
+}
+
+button {
+  background-color: #7aaf7a;
+
+  color: white;
+  border-style: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #449d44;
+}
+
+.end_btn {
+  text-align: center;
+  padding: 10px;
+}
+
+.end_btn button {
+  background-color: #656b65;
+
+  color: white;
+  border-style: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.end_btn button:hover {
+  background-color: #7aaf7a;
+}
+
+#cartTable {
+  width: 80%;
+  border-collapse: collapse;
+  margin: 20px auto;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#cartTable th,
+td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+#cartTable th {
+  background-color: #67a169;
+  color: white;
+}
+
+/* Hover effect for rows */
+#cartTable tr:hover {
+  background-color: #f5f5f5;
+}
+
+/* Button styling */
+#cartTable button {
+  cursor: pointer;
+  background-color: #cf736d; /* Red */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+#cartTable button:hover {
+  background-color: #af5757;
+}
+
+#cartTable td:last-child {
+  text-align: center;
+}
+
+#thankyoucontainer {
+  max-width: 600px;
+  width: 100%;
+  padding: 40px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  background-color: #ffffff;
+}
+
+.order-container {
+  margin: 20px auto;
+  width: 80%;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.order-header {
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+.order-items {
+  margin: 10px 0;
+}
+.order-item {
+  margin-bottom: 5px;
+}
+a.continue-shopping {
+  display: inline-block;
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+___________________________________________________________
+
+order_style.css
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header,
+footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #f4f4f4;
+}
+
+header img {
+  height: 60px;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin: 0 15px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+}
+
+.order-container {
+  margin: 20px auto;
+  width: 80%;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.order-header {
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th,
+td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+th {
+  background-color: #f2f2f2;
+}
+a.continue-shopping {
+  display: inline-block;
+  padding: 10px 15px;
+  background-color: #449d44;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 20px;
+  justify-content: center;
+}

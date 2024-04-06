@@ -1,15 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>product database</title>
-</head>
-<body>
 <?php
 
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
+// ini_set('display_errors', 1);
+// error_reporting(E_ALL);
 
 //establish connection info
 $server = "shuoy.sgedu.site"; // your server
@@ -23,6 +15,15 @@ $conn = new mysqli($server, $userid, $pw, $db); // You can directly pass $db her
 // SQL query to fetch all products
 $productSQL = "SELECT product_id, name, price, description, image_url FROM products";
 $productResult = $conn->query($productSQL);
+
+
+$orderSQL = "SELECT order_id, date_ordered FROM orders";
+$orderResult = $conn->query($orderSQL);
+
+
+$orderItemsSQL = "SELECT order_id, product_id, quantity FROM order_items";
+$orderItemsResult = $conn->query($orderItemsSQL);
+
 
 //for testing
 
@@ -57,5 +58,3 @@ $productResult = $conn->query($productSQL);
 
 
 ?>
-</body>
-</html>
