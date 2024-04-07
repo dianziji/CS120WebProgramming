@@ -123,12 +123,25 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  function removeFromCart(productId) {
-    let cart = JSON.parse(localStorage.getItem("cart")) || {};
-    if (cart[productId]) {
-      delete cart[productId];
-      localStorage.setItem("cart", JSON.stringify(cart));
-      renderCartItems(); // Re-render the cart to reflect the removed item
+
+  document.getElementById("cartItemsContainer").addEventListener("click", function(event) {
+    if (event.target.tagName === 'BUTTON' && event.target.textContent === 'Remove') {
+        const productId = event.target.closest('tr').querySelector('.cart-quantity').dataset.productId;
+        removeFromCart(productId);
+        renderCartItems();
     }
-  }
 });
+
+});
+
+
+
+function removeFromCart(productId) {
+  console.log(`Removing product with ID: ${productId}`); 
+  let cart = JSON.parse(localStorage.getItem("cart")) || {};
+  if (cart[productId]) {
+    delete cart[productId];
+    localStorage.setItem("cart", JSON.stringify(cart));
+     // Re-render the cart to reflect the removed item
+  }
+}
