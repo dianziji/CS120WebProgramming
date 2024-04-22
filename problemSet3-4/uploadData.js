@@ -1,48 +1,52 @@
-const MongoClient = require('mongodb').MongoClient;
-const csv = require('csv-parser');
-const fs = require('fs');
-const url = 'mongodb+srv://shuo:db_123456@nodejsstudy.x2v6zgg.mongodb.net/?retryWrites=true&w=majority&appName=nodejsStudy';  // MongoDB connection string
-const dbName = 'ps3-4';  // Database name
+const MongoClient = require("mongodb").MongoClient;
+const csv = require("csv-parser");
+const fs = require("fs");
+// MongoDB connection string
+const url =
+  "mongodb+srv://syang22:7LT1y9ExIy0MfhIn@cs120db.qz5se4e.mongodb.net/?retryWrites=true&w=majority&appName=cs120db";
+// Database name
+const dbName = "problemSet3-4";
 
 async function uploadData() {
-    const client = new MongoClient(url);
-    
-    try {
-      // Connect to the MongoDB client
-      await client.connect();
-      console.log("Connected to MongoDB server");
-      const db = client.db(dbName);
-      const collection = db.collection('places');
-  
-      // Read the CSV file
-      fs.createReadStream('zips.csv')
-        .pipe(csv())
-        .on('data', async (row) => {
-          const place = row['place'];
-          const zip = row['zip'];
-  
-          // Insert or update the place data
-          const result = await collection.findOneAndUpdate(
+  const client = new MongoClient(url);
+
+  try {
+    await client.connect();
+    console.log("Connected successfully to server");
+    const db = client.db(dbName);
+    const collection = db.collection("places");
+
+    const dataMap = new Map();
+
+    // Read the CSV file and prepare the data
+    fs.createReadStream("zips.csv")
+      .pipe(csv(["place", "zip"]))
+      .on("data", (row) => {
+        const place = row.place.trim();
+        const zip = row.zip.trim();
+        if (dataMap.has(place)) {
+          dataMap.get(place).add(zip);
+        } else {
+          dataMap.set(place, new Set([zip]));
+        }
+      })
+      .on("end", async () => {
+        // Process each place and their zip codes
+        for (const [place, zipSet] of dataMap.entries()) {
+          const zips = Array.from(zipSet);
+          await collection.updateOne(
             { place: place },
-            { $addToSet: { zips: zip } },
+            { $set: { place: place, zips: zips } },
             { upsert: true }
           );
-  
-          if (result.lastErrorObject.upserted) {
-            console.log(`Added new place: ${place} with zip ${zip}`);
-          } else {
-            console.log(`Updated ${place} with zip ${zip}`);
-          }
-        })
-        .on('end', () => {
-          console.log('CSV file has been processed.');
-          client.close();
-        });
-    } catch (err) {
-      console.error('An error occurred:', err);
-      client.close();
-    }
+          console.log(`Processed ${place} with zips: ${zips.join(", ")}`);
+        }
+        client.close();
+      });
+  } catch (err) {
+    console.error(err);
+    client.close();
   }
-  
-  uploadData();
-  
+}
+
+uploadData();
