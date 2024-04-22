@@ -1,9 +1,11 @@
 const MongoClient = require("mongodb").MongoClient;
 const csv = require("csv-parser");
 const fs = require("fs");
+// MongoDB connection string
 const url =
-  "mongodb+srv://syang22:7LT1y9ExIy0MfhIn@cs120db.qz5se4e.mongodb.net/?retryWrites=true&w=majority&appName=cs120db"; // MongoDB connection string
-const dbName = "problemSet3-4"; // Database name
+  "mongodb+srv://syang22:7LT1y9ExIy0MfhIn@cs120db.qz5se4e.mongodb.net/?retryWrites=true&w=majority&appName=cs120db";
+// Database name
+const dbName = "problemSet3-4";
 
 async function uploadData() {
   const client = new MongoClient(url);
