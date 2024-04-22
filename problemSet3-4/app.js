@@ -13,16 +13,27 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
+// Connect to MongoDB once
+async function connectMongo() {
+  try {
+    await client.connect();
+    console.log("Connected successfully to server");
+  } catch (err) {
+    console.error("Failed to connect to MongoDB", err);
+  }
+}
+
+connectMongo();
+
 app.get("/", (req, res) => {
   res.render("index");
 });
 
 app.post("/process", async (req, res) => {
   const input = req.body.searchInput;
-  const isZip = /^\d/.test(input); // Check if input starts with a number
+  const isZip = /^\d/.test(input);
 
   try {
-    await client.connect();
     const db = client.db(dbName);
     const collection = db.collection("places");
     console.log("Connected successfully to server");
