@@ -2,13 +2,13 @@
   "name": "problemset3-4",
   "version": "1.0.0",
   "description": "",
-  "main": "problemSet3-4/app.js",
+  "main": "../problemSet3-4/app.js",
   "engines": {
     "node": "21.7.2"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "start": "node problemSet3-4/app.js"
   },
   "keywords": [],
   "author": "",
