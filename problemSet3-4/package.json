@@ -2,7 +2,7 @@
   "name": "problemset3-4",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "engines": {
     "node": "21.7.2"
   },
