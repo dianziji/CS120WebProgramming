@@ -4,7 +4,6 @@ const MongoClient = require("mongodb").MongoClient;
 const app = express();
 
 const url =
-  process.env.MONGODB_URI ||
   "mongodb+srv://syang22:7LT1y9ExIy0MfhIn@cs120db.qz5se4e.mongodb.net/?retryWrites=true&w=majority&appName=cs120db";
 const dbName = "problemSet3-4";
 const client = new MongoClient(url);
