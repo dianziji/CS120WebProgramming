@@ -1,19 +1,22 @@
 {
-  "name": "helloapp",
+  "name": "problemset3-4",
   "version": "1.0.0",
-  "description": "example node app for heroku",
-  "main": "hello_app.js",
+  "description": "",
+  "main": "problemSet3-4/app.js",
+  "engines": {
+    "node": "21.7.2"
+  },
   "scripts": {
-  "start": "node hello_app.js"
-},
-  "repository": {
-  "type": "git",
-  "url": ""
-},
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-  "url": ""
-},
-  "homepage": ""
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "csv-parser": "^3.0.0",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "mongodb": "^6.5.0"
+  }
 }
